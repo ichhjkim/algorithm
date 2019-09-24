@@ -1,10 +1,6 @@
 def tracking(count):
     global result
     if count == N:
-        # print(height, '높이')
-        # print(width, '가로')
-        # print(cross_left, '왼쪽 대각선')
-        # print(cross_right, '오른쪽 대각선')
         result += 1
     else:
         for i in range(N):
