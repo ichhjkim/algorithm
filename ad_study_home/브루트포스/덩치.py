@@ -1,7 +1,25 @@
 N = int(input())
-# sort 해서 첫번쨰꺼 ㅈ기준으로 쏘트
-# 두번쨰꺼 기준으로 쏘드
-# 해당 인덱스하고 값이 동일하면 count += 1
-# # 동일하지 않은 경우 동일하지 않은 경우의 cnt += 1
-# 다시 동일해지면 count + cnt
-for _ in range(N):
+
+idx_one = []
+for i in range(N):
+    idx_one.append([i]+list(map(int, input().split()))+[0])
+
+
+
+for i in range(N):
+    bigger = 1
+    for j in range(N):
+        if idx_one[i][1] < idx_one[j][1] and idx_one[i][2] < idx_one[j][2]:
+            bigger += 1
+
+    idx_one[i][3] = bigger
+
+idx_one.sort()
+for f in range(N):
+    print(idx_one[f][3], end=' ')
+
+
+
+
+
+
