@@ -4,8 +4,6 @@ idx_one = []
 for i in range(N):
     idx_one.append([i]+list(map(int, input().split()))+[0])
 
-
-
 for i in range(N):
     bigger = 1
     for j in range(N):
