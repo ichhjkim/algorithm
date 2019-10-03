@@ -3,30 +3,26 @@ rooms = []
 for i in range(N):
     rooms.append(list(map(int, input().split())))
 
-rooms = sorted(rooms, key=lambda element: element[1])
-compare = sorted(rooms)
-max_count = 0
-print(rooms)
-print(compare)
+rooms = sorted(rooms, key=lambda element : (element[1], element[0]))
+# print(rooms)
 queue = [rooms[0]]
-idx = 0
+s = 1
+count = 1
 while queue:
-    count = 0
-    print(queue, '큐========')
-    temp = queue.pop(0)
-    for j in range(N):
-        if temp == compare[j]:
-            continue
-        if compare[j][0] < temp[1] and compare[j][1] > temp[0]:
-            print(compare[j], '인덱스')
+
+    stand = queue.pop(0)
+    for i in range(s, N):
+
+        if stand[1] <= rooms[i][0]:
+            s = i+1
             count += 1
-        elif compare[j][0] >= temp[1]:
-            queue.append(compare[j])
-            idx = compare.index(compare[j])
+            queue.append(rooms[i])
             break
 
-    if max_count < count:
-        max_count = count
+print(count)
 
-print(max_count)
+
+
+
+
 
