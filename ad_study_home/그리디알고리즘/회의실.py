@@ -5,22 +5,23 @@ for i in range(N):
 
 rooms = sorted(rooms, key=lambda element : (element[1], element[0]))
 # print(rooms)
-queue = [rooms[0]]
+stand = rooms[0]
 s = 1
 count = 1
-while queue:
+while s < N-1:
 
-    stand = queue.pop(0)
     for i in range(s, N):
 
         if stand[1] <= rooms[i][0]:
             s = i+1
             count += 1
-            queue.append(rooms[i])
+            stand = rooms[i]
             break
 
-print(count)
+    else:
+        break
 
+print(count)
 
 
 
