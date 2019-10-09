@@ -1,17 +1,26 @@
-def search(a, b, c, d, N):
-    global count
-    result = 0
-    for i in range(a, b):
-        for j in range(c, d):
-            result += arr[i][j]
+def search(a, b, c, d, M):
+    global white, blue
 
-    if not result or result == N*N:
-        count += 1
+    result = 0
+    if M == 1:
+        if not arr[a][c]:
+            white += 1
+        else:
+            blue += 1
     else:
-        search(a, b//2, a, b//2, N//2)
-        search(a, b//2, b//2, b, N//2)
-        search(b//2, b, a, b//2, N//2)
-        search(b//2, b, b//2, b, N//2)
+        for i in range(a, b):
+            for j in range(c, d):
+                result += arr[i][j]
+
+        if not result:
+            white += 1
+        elif result == M**2:
+            blue += 1
+        else:
+            search(a, (a+b)//2, c, (c+d)//2, M//2)
+            search(a, (a+b)//2, (c+d)//2, d, M//2)
+            search((a+b)//2, b, c, (c+d)//2, M//2)
+            search((a+b)//2, b, (c+d)//2, d, M//2)
 
 
 N = int(input())
@@ -21,6 +30,7 @@ arr = [0]*N
 for i in range(N):
     arr[i] = list(map(int, input().split()))
 
-count = 0
+white = blue = 0
 search(0, N, 0, N, N)
-print(count)
+print(white)
+print(blue)
