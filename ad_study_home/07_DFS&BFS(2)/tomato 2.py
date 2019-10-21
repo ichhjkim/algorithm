@@ -9,7 +9,7 @@ def confirm():
                 if tomatoes[h][n][m] ==0 and not visited[h][n][m]:
                     return -1
 
-    return count
+    return count-1
 
 M, N, H = map(int, input().split())
 
@@ -19,7 +19,7 @@ def BFS():
     dy = [0, 0, -1, 1]
     dh = [-1, 1]
     while queue:
-        print(queue)
+
         count += 1
         for _ in range(len(queue)):
             temp = queue.popleft()
@@ -31,6 +31,7 @@ def BFS():
                     pass
                 elif tomatoes[temp[0]][idx][idy]== 0 and not visited[temp[0]][idx][idy]:
                     visited[temp[0]][idx][idy] = 1
+
                     queue.append([temp[0], idx, idy])
 
             for h in range(2):
@@ -47,7 +48,7 @@ for h in range(H):
     for n in range(N):
         tomatoes[h][n] = list(map(int, input().split()))
 
-visited = [[[0]*M]*N for _ in range(H)]
+visited = [[[0]*M for _ in range(N)] for _ in range(H)]
 
 queue = collections.deque([])
 for h in range(H):
