@@ -1,0 +1,74 @@
+import collections
+
+
+def BFS(selected):
+    global min_count, flag, blank
+
+    selected = collections.deque(selected)
+    visited = [[0] * N for _ in range(N)]
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    copy_blank = blank
+    for i in range(M):
+        visited[selected[i][0]][selected[i][1]]=1
+    count = 0
+    while selected:
+        if not copy_blank:
+            flag = True
+            if count < min_count:
+                min_count = count
+            return
+
+        count += 1
+        for _ in range(len(selected)):
+            temp = selected.popleft()
+
+            for x in range(4):
+                idx = temp[0]+dx[x]
+                idy = temp[1]+dy[x]
+
+                if idx < 0 or idy < 0 or idx > N-1 or idy > N-1:
+                    continue
+                elif research[idx][idy] == 0 and not visited[idx][idy]:
+                    visited[idx][idy] = 1
+                    copy_blank -= 1
+                    selected.append([idx, idy])
+                elif research[idx][idy] == 2 and not visited[idx][idy]:
+                    visited[idx][idy] = 1
+                    selected.append([idx, idy])
+
+
+def combination(st, depth, selected):
+    if depth == M:
+        BFS(selected)
+
+    else:
+        for i in range(st, len(virus)):
+            selected[depth] = virus[i]
+            combination(i+1, depth+1, selected)
+
+N, M = map(int, input().split())
+
+research = [0]*N
+
+for i in range(N):
+    research[i] = list(map(int, input().split()))
+
+virus = []
+min_count = 10000000000000000
+blank = 0
+for i in range(N):
+    for j in range(N):
+        if research[i][j] == 2:
+            virus.append([i, j])
+        elif research[i][j] == 0:
+            blank += 1
+
+
+flag = False
+combination(0, 0, [0]*M)
+
+if flag:
+    print(min_count)
+else:
+    print(-1)
