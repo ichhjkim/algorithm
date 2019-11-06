@@ -1,25 +1,16 @@
 def choice(num, count, visited):
     # count 값도 백트래킹 하기 전 값으로 해줘야함.
+    ori_count = count
+
     if count == M:
         # mis 인덱스에 넣기 위한 것. mins 인덱스 한칸씩 증가시키기 위함. append를 최대한 안쓰기 위한 나의노력...
         calculated(visited)
 
-    ori_n = num
-    ori_count = count
-    check = [1, 0]
-
-    # visited는 살려두는 애들을 체크함.count로..!
-    for l in range(num, len(chicken)):
-        if not visited[l]:
-            for c in check:
-                visited[l] = c
-                if visited[l]:
-                    count += 1
-                    num = l+1
-                    choice(num, count, visited)
-                    num = ori_n
-                    count = ori_count
-                    visited[l] = 0
+    else:
+        for l in range(num, len(chicken)):
+                visited[l] = 1
+                choice(l+1, count+1, visited)
+                visited[l] = 0
 
 def calculated(visited):
     global results
