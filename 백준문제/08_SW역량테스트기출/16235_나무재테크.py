@@ -52,22 +52,19 @@ def time(K):
             for y in range(N):
                 if trees[x][y]:
                     trees[x][y].sort()
-
-                    discard = []
+                    discard = 0
                     new = []
+
                     for f in range(len(trees[x][y])):
                         if (feed[x][y] - trees[x][y][f]) >= 0:
                             feed[x][y] -= trees[x][y][f]
                             trees[x][y][f] += 1
                             new.append(trees[x][y][f])
                         else:
-                            discard.append([f, trees[x][y][f]])
+                            discard += trees[x][y][f] // 2
 
                     # 여름 : 죽은 나무의 나이가 양분, 나이의 //2
-
-                    for i in range(len(discard)):
-                        feed[x][y] += discard[i][1] // 2
-
+                    feed[x][y] += discard
                     trees[x][y] = new[:]
 
         for x in range(N):
