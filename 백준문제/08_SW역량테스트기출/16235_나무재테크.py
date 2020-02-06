@@ -7,7 +7,7 @@
 # # 나무가 자신의 나이 만큼 양분을 먹고. 나이가 1증가
 # 하나의 칸에 여러개의 나무가 있으면 나이가 어린 나무부터 양분을 먹음
 # 양분이 없어서 자신의 나이만큼 양분 못먹으면 바로 죽음
-
+# 여름 : 봄에 죽은 나무가 양분으로 변함. 각 죽은 나무의 나이를 2로 나눈 값이 양분이 됨. 몫
 # 가을 --> 나무 번식
 # 번식할 수 있는 나무는 나이가 5의 배수
 # 8칸에 나이가 1인 나무가 생긴다.
@@ -21,6 +21,7 @@ N, M, K = map(int, input().split())
 
 feed = [list(map(int, input().split())) for _ in range(N)]
 
-trees = [list(map(int, input().split()) for _ in range(M))
+trees = [list(map(int, input().split()) for _ in range(M))]
+
 
 
