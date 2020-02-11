@@ -15,11 +15,10 @@ def solution(board):
     # 100을 넘어가는 경우
     while time <= 100:
 
-        for x in range(len(board)):
-            for y in range(len(board[0])):
-                if x == r and y==c and board[r][c]==k :
-                    return time
-        #for q in range(len(board)):
+
+        if r < len(board) and c < len(board[0]) and board[r][c]==k :
+            return time
+#for q in range(len(board)):
         #    print(board[q])
         #print('----------------------')
         # 행과 열의 크기 비교
@@ -27,10 +26,12 @@ def solution(board):
         # C 연산 : 모든 열에 대해 정렬 수행 // 행의 갯수 < 열의 개수
         if len(board) >= len(board[0]):
            temp_board =  R(board)
-           for i in range(len(temp_board)):
-                board[i] = temp_board[i][:]
+           board = temp_board
            #for q in range(len(board)):
-           #    print(board[q])
+           #    print(board[q])3 3 3
+           # 1 1 1
+           # 1 1 1
+           # 1 1 1
            #print('-------R연산 후---------------',time)
         else:
             temp = C(board)
