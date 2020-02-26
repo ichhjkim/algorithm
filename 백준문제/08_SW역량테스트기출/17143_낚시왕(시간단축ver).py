@@ -1,16 +1,3 @@
-
-# 칸에는 상어가 최대 한마리
-# 낚시왕은 0, -1에서 시작
-
-# 1초동안
-# 1. 오른쪽으로 한칸 이동
-# 인덱스가 x, C-1이 되면 멈춤??
-
-
-# result 는 잡은 상어크기의 합
-
-# R*C
-# r 행 c 열
 R, C, M = map(int, input().split())
 
 sea = []
@@ -49,6 +36,11 @@ def work():
                     idx = x
                     idy = y
                     # 3. 상어 이동 : 주어진 속도로 이동 1초에 3간이동,
+                    if dx[d] != 0:
+                        sd = sd % (2*(R-1))
+                    else:
+                        sd = sd % (2*(C-1))
+
                     while sd:
                         sd -= 1
                         if dx[d] != 0:
@@ -91,23 +83,3 @@ def work():
     return result
 
 print(work())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
