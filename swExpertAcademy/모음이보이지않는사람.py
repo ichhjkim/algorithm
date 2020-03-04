@@ -7,5 +7,7 @@ for tc in range(1, T+1):
     result = t.replace('a', '').replace('e', '').replace('i', '').replace('o', '').replace('u', '')
     print('{} {}'.format(tc, result))
 
-
-    print('만낭이는 내꺼다')
+    num = '23,920'
+    num = num.split(',')
+    num = ''.join(num)
+    print(num)
