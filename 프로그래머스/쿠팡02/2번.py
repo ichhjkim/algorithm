@@ -16,7 +16,7 @@ def solution(rooms, target):
     people = {}
     for room in rooms:
         room = room.split(']')
-        room_num = room[0][1:]
+        room_num = int(room[0][1:])
         pps = room[1].split(',')
         print(pps)
         for pp in pps:
@@ -38,12 +38,5 @@ def solution(rooms, target):
 
     candidates = sorted(candidates, key=lambda x: (len(x[1]), x[2] ,x[0]))
     result = [ candidate[0] for candidate in candidates]
-    print(candidates)
-
-
-
-
-
-
 
     return result
