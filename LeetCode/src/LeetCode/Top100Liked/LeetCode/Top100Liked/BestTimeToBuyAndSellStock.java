@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class BestTimeToBuyAndSellStock {
     public static int maxProfit(int[] prices) {
-        // ìµœì†Ÿê°’ì´ ë³€í•˜ëŠ” ì‹œì ì´ ì¤‘ìš”í•¨, ì–¸ì œ ì œì¼ ì‹¸ê²Œ ì‚¬ëŠ”ì§€
+        // ìµœì†Ÿê°’ì´ ë³??•˜?Š” ?‹œ? ?´ ì¤‘ìš”?•¨, ?–¸? œ ? œ?¼ ?‹¸ê²? ?‚¬?Š”ì§?
         //
         int minP = prices[0];
         int max = 0;

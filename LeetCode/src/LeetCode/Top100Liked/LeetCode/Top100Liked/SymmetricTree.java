@@ -1,5 +1,21 @@
+package LeetCode.Top100Liked;
+
+import LeetCode.Top100Liked.MergeTwoBinaryTrees.TreeNode;
 
 class SymmetruicTree {
+	
+	public class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+		TreeNode() {};
+		TreeNode(int val) {this.val = val;}
+		TreeNode(int val, TreeNode left, TreeNode right) {
+			this.val = val;
+			this.left = left;
+			this.right = right;
+		}
+	}
 
     public boolean isSymmetric(TreeNode root) {
         return isMirror(root.left, root.right);
@@ -17,7 +33,7 @@ class SymmetruicTree {
 
 }
 
-
+/*
 public class Solution {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if (t1 == null)
@@ -30,3 +46,4 @@ public class Solution {
         return t1;
     }
 }
+*/
